@@ -10,21 +10,19 @@ describe('Airport', function () {
   });
 
   it('has an empty hangar by default', function () {
-    expect(airport.hangar()).toEqual([]);
+    expect(airport.checkHangar()).toEqual("No planes in hangar");
   });
 
   describe('#clearedForLanding', function () {
     it('can clear a plane for landing', function () {
-      airport.clearedForLanding(plane);
-      expect(airport.hangar()).toEqual([plane]);
+      expect(airport.clearedForLanding(plane)).toEqual("Cleared for landing");
     });
   })
 
   describe('#clearedForTakeOff', function () {
     it('can clear a plane for takeOff', function () {
       airport.clearedForLanding(plane);
-      airport.clearedForTakeOff(plane);
-      expect(airport.hangar()).not.toContain(plane);
+      expect(airport.clearedForTakeOff(plane)).toEqual("Cleared for takeoff");
     })
   })
 });
