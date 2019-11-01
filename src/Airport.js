@@ -15,6 +15,8 @@ Airport.prototype.clearedForLanding = function (plane) {
 
 Airport.prototype.clearedForTakeOff = function (plane) {
   var planeInHangar = this._hangar.indexOf(plane);
+
+  if (planeInHangar === -1) throw "Plane cannot takeoff. Not in hangar"
   this._hangar.splice(planeInHangar, 1);
   return "Cleared for takeoff"
 }

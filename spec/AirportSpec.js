@@ -29,6 +29,10 @@ describe('Airport', function () {
       airport.clearedForLanding(plane);
       expect(airport.clearedForTakeOff(plane)).toEqual("Cleared for takeoff");
     })
+
+    it('errors if plane not at aiport', function () {
+      expect(() => airport.clearedForTakeOff(plane)).toThrow("Plane cannot takeoff. Not in hangar")
+    })
   })
 });
 
