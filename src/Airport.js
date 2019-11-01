@@ -7,6 +7,8 @@ Airport.prototype.checkHangar = function () {
 }
 
 Airport.prototype.clearedForLanding = function (plane) {
+  if (this._isPlaneInHangar(plane)) throw "Plane cannot land. Already in hangar"
+
   this._hangar.push(plane);
   return "Cleared for landing"
 };
@@ -21,4 +23,8 @@ Airport.prototype._isHangarEmpty = function (hangar) {
   return this._hangar.length === 0 ?
     "No planes in hangar" :
     `${this._hangar.length} plane(s) in hangar`
+}
+
+Airport.prototype._isPlaneInHangar = function (plane) {
+  return this._hangar.indexOf(plane) !== -1
 }

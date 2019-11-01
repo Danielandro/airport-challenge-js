@@ -17,6 +17,11 @@ describe('Airport', function () {
     it('can clear a plane for landing', function () {
       expect(airport.clearedForLanding(plane)).toEqual("Cleared for landing");
     });
+
+    it('errors if plane already at airport', function () {
+      airport.clearedForLanding(plane);
+      expect(() => airport.clearedForLanding(plane)).toThrow("Plane cannot land. Already in hangar");
+    })
   })
 
   describe('#clearedForTakeOff', function () {
